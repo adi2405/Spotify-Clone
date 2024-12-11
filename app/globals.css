@@ -2,20 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  height: 100%;
+  background-color: #000;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::-webkit-scrollbar {
+  display: none;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Base styles for the input range */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: #4a4a4a;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Track styling (background + trail) */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #ffffff 0%, #ffffff var(--progress), #4a4a4a var(--progress), #4a4a4a 100%);
+  border-radius: 4px;
+  height: 4px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track:hover {
+  background: linear-gradient(to right, #1db954 0%, #1db954 var(--progress), #4a4a4a var(--progress), #4a4a4a 100%);
+}
+
+input[type="range"]::-moz-range-track {
+  background: linear-gradient(to right, #ffffff 0%, #ffffff var(--progress), #4a4a4a var(--progress), #4a4a4a 100%);
+  border-radius: 4px;
+  height: 4px;
+}
+
+input[type="range"]::-moz-range-track:hover {
+  background: linear-gradient(to right, #1db954 0%, #1db954 var(--progress), #4a4a4a var(--progress), #4a4a4a 100%);
+}
+
+input[type="range"]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 4px 0;
+  color: transparent;
+  width: 100%;
+  height: 4px;
+}
+
+/* Thumb styling - hidden by default */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  visibility: hidden;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  margin-top: -4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  visibility: hidden;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  margin-top: -4px;
+}
+
+input[type="range"]::-ms-thumb {
+  visibility: hidden;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  margin-top: -4px;
+}
+
+/* Show thumb on hover */
+input[type="range"]:hover::-webkit-slider-thumb {
+  visibility: visible;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  visibility: visible;
+}
+
+input[type="range"]:hover::-ms-thumb {
+  visibility: visible;
 }
