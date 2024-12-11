@@ -5,14 +5,15 @@ import SearchContent from "./components/SearchContent";
 
 interface SearchProps {
   searchParams: {
-    title: string;
+    title?: string;
   };
 }
 
 export const revalidate = 0;
 
 const Search = async ({ searchParams }: SearchProps) => {
-  const songs = await getSongsByTitle(searchParams.title);
+  const title = searchParams?.title || "";
+  const songs = await getSongsByTitle(title);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
